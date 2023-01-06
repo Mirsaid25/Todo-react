@@ -8,12 +8,10 @@ function Search({state, dispatch}) {
 
 	function InputValue(e) {
 		let filtered =  state.arr.filter(item=> {
-			if(item.name.includes(e.target.value)){
+			if(e.target.value.length >0 && item.name.includes(e.target.value)){
 				return item
 			}
-			return item
 		})
-		console.log(filtered);
 		setResult(filtered)
 	}
 
@@ -28,16 +26,11 @@ function Search({state, dispatch}) {
         />
       </div>
       <div className="flex items-center gap-[15px] flex-wrap m-4">
-		{result.map((item)=>{
-			<h1>{item.name}</h1>
-			// <Item state={item} dispatch={dispatch}/>
-		})}
-        {/* {result === null ? <h1 className="text-white text-center">Ничего не найденно</h1>
-		:
-		result?.map((item)=>{
-			<Item state={item} dispatch={dispatch}/>
-		})
-		} */}
+		{
+			result.length >0 ? result.map((item)=>(
+			<Item state={item} dispatch={dispatch}/>)):
+			<h1 className="text-white">Ничего не найденно</h1>
+		}
       </div>
       <Link to="/">
         <button className="cursor-pointer w-[70px] h-[70px] rounded-[100%] bg-[#444444] flex items-center justify-center fixed bottom-[30px] right-[30px]">

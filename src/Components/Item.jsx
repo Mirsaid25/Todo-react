@@ -76,8 +76,6 @@ const ChangeTodo = ({ setModal, state, dispatch }) => {
 function Item({ state, dispatch }) {
   const [modal, setModal] = useState(false);
 
-  console.log(state, 'hello');
-
   function deleteTask() {
     dispatch({
       type: "DELETE",
